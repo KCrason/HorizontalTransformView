@@ -76,13 +76,22 @@ public abstract class TransformAdapter<T> {
     }
 
 
-    private View getView(int position) {
+    private View getView(final int position) {
         View view = LayoutInflater.from(mContext).inflate(getLayoutId(), null);
         if (mViewHolder == null) {
             throw new RuntimeException("before set data , please set ViewHolder!");
         }
         mViewHolder.setView(view);
         setItemData(mViewHolder, mTList.get(position));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OnTransformItemClickListener onTransformItemClickListener = mHorizontalTransformView.getOnTransformItemClickListener();
+                if (onTransformItemClickListener != null) {
+                    onTransformItemClickListener.onItemClickListener(view, position);
+                }
+            }
+        });
         return view;
     }
 

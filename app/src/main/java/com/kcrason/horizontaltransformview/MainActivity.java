@@ -2,41 +2,22 @@ package com.kcrason.horizontaltransformview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
-import com.bumptech.glide.Glide;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnTransformItemClickListener, View.OnClickListener {
 
     private HorizontalTransformView mHorizontalTransformView;
-    private TransformAdapter<BigVBean> bigVBeanTransformAdapter;
 
+    private CurTransformAdapter mCurTransformAdapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mHorizontalTransformView = (HorizontalTransformView) findViewById(R.id.transform_view);
-        ViewHolder viewHolder = new ViewHolder();
-        bigVBeanTransformAdapter = new TransformAdapter<BigVBean>(viewHolder) {
-            @Override
-            public int getLayoutId() {
-                return R.layout.item;
-            }
-
-            @Override
-            public void setItemData(ViewHolder viewHolder, BigVBean bigVBean) {
-                viewHolder.mTextView.setText(bigVBean.mUserName);
-                Glide.with(MainActivity.this
-                ).load(bigVBean.mAvatar).asBitmap().into(viewHolder.mAvatar);
-            }
-        };
-        mHorizontalTransformView.setAdapter(bigVBeanTransformAdapter);
-
-        initData();
-    }
+    private ImageView mRefresh;
 
     private String imageUrl[] = {"http://img2.3lian.com/2014/f6/173/d/51.jpg",
             "http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1402/12/c1/31189058_1392186616852.jpg",
@@ -52,16 +33,49 @@ public class MainActivity extends AppCompatActivity {
             "http://img4.duitang.com/uploads/blog/201404/01/20140401133842_VQj2t.thumb.600_0.jpeg",
             "http://img15.3lian.com/2015/f1/41/d/80.jpg"};
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mRefresh = (ImageView) findViewById(R.id.img_refresh);
+        mRefresh.setOnClickListener(this);
+
+        mHorizontalTransformView = (HorizontalTransformView) findViewById(R.id.transform_view);
+        ViewHolder viewHolder = new ViewHolder();
+        mCurTransformAdapter = new CurTransformAdapter(this, viewHolder);
+        mHorizontalTransformView.setAdapter(mCurTransformAdapter);
+        mHorizontalTransformView.setOnTransformItemClickListener(this);
+        initData();
+    }
+
     private void initData() {
         List<BigVBean> bigVBeens = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             BigVBean bigVBean = new BigVBean();
-            bigVBean.mUserName = "UserName" + i;
+            bigVBean.mUserName = sUserNames[(int) (Math.random() * 3)];
             bigVBean.mAvatar = imageUrl[(int) (Math.random() * 3) * 4];
             bigVBeens.add(bigVBean);
         }
-        bigVBeanTransformAdapter.setData(bigVBeens);
+        mCurTransformAdapter.setData(bigVBeens);
     }
 
+    private String sUserNames[] = {"KCrason", "KNoBaby", "KNight", "KSun"};
 
+    @Override
+    public void onItemClickListener(View view, int position) {
+        Toast.makeText(this, "position:" + position, Toast.LENGTH_SHORT).show();
+    }
+
+    private void startAanimation() {
+        RotateAnimation rotateAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotateAnimation.setFillAfter(true);
+        rotateAnimation.setDuration(400);
+        mRefresh.startAnimation(rotateAnimation);
+    }
+
+    @Override
+    public void onClick(View view) {
+        startAanimation();
+        initData();
+    }
 }
