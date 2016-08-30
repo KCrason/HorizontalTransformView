@@ -2,13 +2,15 @@ package com.kcrason.horizontaltransformview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnTransformItemClickListener {
 
     private HorizontalTransformView mHorizontalTransformView;
     private TransformAdapter<BigVBean> bigVBeanTransformAdapter;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         mHorizontalTransformView.setAdapter(bigVBeanTransformAdapter);
+        mHorizontalTransformView.setOnTransformClickListener(this);
 
         initData();
     }
@@ -64,4 +67,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onTransformListener(View view, int position) {
+        Toast.makeText(this, "当前" + position, Toast.LENGTH_SHORT).show();
+    }
 }

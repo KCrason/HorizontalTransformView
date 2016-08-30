@@ -33,6 +33,16 @@ public class HorizontalTransformView extends LinearLayout {
         init(context);
     }
 
+    private OnTransformItemClickListener mOnTransformItemClickListener;
+
+    public void setOnTransformClickListener(OnTransformItemClickListener onTransformClickListener) {
+        this.mOnTransformItemClickListener = onTransformClickListener;
+    }
+
+    public OnTransformItemClickListener getOnTransformItemClickListener() {
+        return mOnTransformItemClickListener;
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public HorizontalTransformView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
