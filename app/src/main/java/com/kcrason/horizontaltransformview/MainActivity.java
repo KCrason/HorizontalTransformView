@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements OnTransformItemCl
         rotateAnimation.setFillAfter(true);
         rotateAnimation.setDuration(400);
         mRefresh.startAnimation(rotateAnimation);
-        //fsfsdfsdfsfsssdds
 
     }
 
