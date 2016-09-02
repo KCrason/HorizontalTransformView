@@ -1,4 +1,4 @@
-package com.kcrason.horizontaltransformview;
+package com.kcrason.randomtransforview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -10,13 +10,13 @@ import android.widget.LinearLayout;
  * @author Created by KCrason on 2016/8/30.
  * @email 535089696@qq.com
  */
-public class HorizontalTransformView extends LinearLayout {
+public class RandomTransformView extends LinearLayout {
 
     private Context mContext;
 
     private OnTransformItemClickListener mOnTransformItemClickListener;
 
-    public HorizontalTransformView(Context context) {
+    public RandomTransformView(Context context) {
         super(context);
         init(context);
     }
@@ -25,17 +25,15 @@ public class HorizontalTransformView extends LinearLayout {
         this.mContext = context;
     }
 
-    public HorizontalTransformView(Context context, AttributeSet attrs) {
+    public RandomTransformView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public HorizontalTransformView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RandomTransformView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
-
-    private OnTransformItemClickListener mOnTransformItemClickListener;
 
     public void setOnTransformClickListener(OnTransformItemClickListener onTransformClickListener) {
         this.mOnTransformItemClickListener = onTransformClickListener;
@@ -46,7 +44,7 @@ public class HorizontalTransformView extends LinearLayout {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public HorizontalTransformView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public RandomTransformView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
@@ -55,14 +53,7 @@ public class HorizontalTransformView extends LinearLayout {
         this.mOnTransformItemClickListener = onTransformItemClickListener;
     }
 
-    public OnTransformItemClickListener getOnTransformItemClickListener(){
-        return mOnTransformItemClickListener;
-    }
-
-
     public void setAdapter(TransformAdapter transformAdapter) {
         transformAdapter.setHorizontalTransformView(mContext, this);
     }
-
-
 }

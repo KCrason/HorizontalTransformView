@@ -1,4 +1,4 @@
-package com.kcrason.horizontaltransformview;
+package com.kcrason.randomtransforview;
 
 import android.view.View;
 

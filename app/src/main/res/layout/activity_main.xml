@@ -39,12 +39,12 @@
         android:layout_height="0.5dip"
         android:background="@android:color/darker_gray"></View>
 
-    <com.kcrason.horizontaltransformview.HorizontalTransformView
+    <com.kcrason.randomtransforview.RandomTransformView
         android:id="@+id/transform_view"
         android:layout_marginTop="8dip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    </com.kcrason.horizontaltransformview.HorizontalTransformView>
+    </com.kcrason.randomtransforview.RandomTransformView>
 </LinearLayout>

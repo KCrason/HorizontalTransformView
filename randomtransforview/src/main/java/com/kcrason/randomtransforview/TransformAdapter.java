@@ -1,4 +1,4 @@
-package com.kcrason.horizontaltransformview;
+package com.kcrason.randomtransforview;
 
 /**
  * @author Created by KCrason on 2016/8/30.
@@ -20,21 +20,21 @@ import java.util.List;
  */
 public abstract class TransformAdapter<T> {
 
-    private HorizontalTransformView mHorizontalTransformView;
+    private RandomTransformView mRandomTransformView;
 
     private List<T> mTList;
 
     private Context mContext;
 
-    private ViewHolder mViewHolder;
+    private BaseViewHolder mBaseViewHolder ;
 
-    public TransformAdapter(ViewHolder viewHolder) {
-        this.mViewHolder = viewHolder;
+    public TransformAdapter(BaseViewHolder baseViewHolder) {
+        this.mBaseViewHolder = baseViewHolder;
     }
 
-    public void setHorizontalTransformView(Context context, HorizontalTransformView horizontalTransformView) {
+    public void setHorizontalTransformView(Context context, RandomTransformView randomTransformView) {
         this.mContext = context;
-        this.mHorizontalTransformView = horizontalTransformView;
+        this.mRandomTransformView = randomTransformView;
     }
 
     public void setData(List<T> data) {
@@ -50,14 +50,14 @@ public abstract class TransformAdapter<T> {
         if (mTList == null) {
             return;
         }
-        if (mHorizontalTransformView != null) {
-            mHorizontalTransformView.removeAllViews();
+        if (mRandomTransformView != null) {
+            mRandomTransformView.removeAllViews();
         }
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.weight = 1;
         for (int i = 0; i < mTList.size(); i++) {
             View view = getView(i);
-            mHorizontalTransformView.addView(view, i, layoutParams);
+            mRandomTransformView.addView(view, i, layoutParams);
         }
     }
 
@@ -78,15 +78,15 @@ public abstract class TransformAdapter<T> {
 
     private View getView(final int position) {
         View view = LayoutInflater.from(mContext).inflate(getLayoutId(), null);
-        if (mViewHolder == null) {
+        if (mBaseViewHolder == null) {
             throw new RuntimeException("before set data , please set ViewHolder!");
         }
-        mViewHolder.setView(view);
-        setItemData(mViewHolder, mTList.get(position));
+        mBaseViewHolder.setItemView(view);
+        setItemData(mBaseViewHolder, mTList.get(position));
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OnTransformItemClickListener onTransformItemClickListener = mHorizontalTransformView.getOnTransformItemClickListener();
+                OnTransformItemClickListener onTransformItemClickListener = mRandomTransformView.getOnTransformItemClickListener();
                 if (onTransformItemClickListener != null) {
                     onTransformItemClickListener.onItemClickListener(view, position);
                 }
@@ -97,7 +97,7 @@ public abstract class TransformAdapter<T> {
 
     public abstract int getLayoutId();
 
-    public abstract void setItemData(ViewHolder viewHolder, T t);
+    public abstract void setItemData(BaseViewHolder baseViewHolder, T t);
 
 
 }

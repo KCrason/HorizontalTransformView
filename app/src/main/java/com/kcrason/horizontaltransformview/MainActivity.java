@@ -8,12 +8,15 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.kcrason.randomtransforview.OnTransformItemClickListener;
+import com.kcrason.randomtransforview.RandomTransformView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnTransformItemClickListener, View.OnClickListener {
 
-    private HorizontalTransformView mHorizontalTransformView;
+    private RandomTransformView mRandomTransformView;
 
     private CurTransformAdapter mCurTransformAdapter;
 
@@ -40,11 +43,11 @@ public class MainActivity extends AppCompatActivity implements OnTransformItemCl
         mRefresh = (ImageView) findViewById(R.id.img_refresh);
         mRefresh.setOnClickListener(this);
 
-        mHorizontalTransformView = (HorizontalTransformView) findViewById(R.id.transform_view);
+        mRandomTransformView = (RandomTransformView) findViewById(R.id.transform_view);
         ViewHolder viewHolder = new ViewHolder();
         mCurTransformAdapter = new CurTransformAdapter(this, viewHolder);
-        mHorizontalTransformView.setAdapter(mCurTransformAdapter);
-        mHorizontalTransformView.setOnTransformItemClickListener(this);
+        mRandomTransformView.setAdapter(mCurTransformAdapter);
+        mRandomTransformView.setOnTransformItemClickListener(this);
         initData();
     }
 
