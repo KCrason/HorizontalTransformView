@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HorizontalTransformView.iml" filepath="$PROJECT_DIR$/HorizontalTransformView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/randomtransforview/randomtransforview.iml" filepath="$PROJECT_DIR$/randomtransforview/randomtransforview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/randomtransformview/randomtransformview.iml" filepath="$PROJECT_DIR$/randomtransformview/randomtransformview.iml" />
     </modules>
   </component>
 </project>

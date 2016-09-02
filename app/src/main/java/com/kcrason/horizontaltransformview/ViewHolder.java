@@ -4,10 +4,7 @@ import android.view.View;
 
 import com.kcrason.randomtransforview.BaseViewHolder;
 
-/**
- * @author Created by KCrason on 2016/8/30.
- * @email 535089696@qq.com
- */
+
 public class ViewHolder extends BaseViewHolder {
 
     private View mView;

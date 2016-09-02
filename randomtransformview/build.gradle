@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 24
@@ -16,6 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+publish {
+    userOrg = 'kcrason'
+    groupId = 'com.kcrason'
+    artifactId = 'randomtransformview'
+    publishVersion = '1.0.0'
+    desc = 'horizontal or vertical transform the view'
+    website = 'https://github.com/KCrason/HorizontalTransformView'
 }
 
 dependencies {

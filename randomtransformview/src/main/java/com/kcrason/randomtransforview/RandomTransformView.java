@@ -6,10 +6,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-/**
- * @author Created by KCrason on 2016/8/30.
- * @email 535089696@qq.com
- */
+
 public class RandomTransformView extends LinearLayout {
 
     private Context mContext;

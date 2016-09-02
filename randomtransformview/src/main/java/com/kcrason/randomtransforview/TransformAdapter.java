@@ -14,10 +14,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Created by KCrason on 2016/8/30.
- * @email 535089696@qq.com
- */
+
 public abstract class TransformAdapter<T> {
 
     private RandomTransformView mRandomTransformView;
@@ -98,6 +95,4 @@ public abstract class TransformAdapter<T> {
     public abstract int getLayoutId();
 
     public abstract void setItemData(BaseViewHolder baseViewHolder, T t);
-
-
 }

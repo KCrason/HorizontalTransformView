@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.3'
-
+        classpath 'com.novoda:bintray-release:0.3.4'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -16,6 +16,16 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+
+ext {
+    userOrg = 'kcrason'
+    groupId = 'com.kcrason'
+    description = 'horizontal or vertical transform the view'
+    publishVersion = '1.0.0'
+    website = 'https://github.com/KCrason/HorizontalTransformView'
+    dryRun = 'false'
 }
 
 task clean(type: Delete) {
