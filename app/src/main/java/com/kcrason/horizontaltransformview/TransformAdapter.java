@@ -88,11 +88,10 @@ public abstract class TransformAdapter<T> {
             public void onClick(View view) {
                 OnTransformItemClickListener onTransformItemClickListener = mHorizontalTransformView.getOnTransformItemClickListener();
                 if (onTransformItemClickListener != null) {
-                    onTransformItemClickListener.onTransformListener(view, position);
+                    onTransformItemClickListener.onItemClickListener(view, position);
                 }
             }
         });
-
         return view;
     }
 

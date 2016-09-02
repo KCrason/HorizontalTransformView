@@ -14,6 +14,8 @@ public class HorizontalTransformView extends LinearLayout {
 
     private Context mContext;
 
+    private OnTransformItemClickListener mOnTransformItemClickListener;
+
     public HorizontalTransformView(Context context) {
         super(context);
         init(context);
@@ -49,7 +51,18 @@ public class HorizontalTransformView extends LinearLayout {
         init(context);
     }
 
+    public void setOnTransformItemClickListener(OnTransformItemClickListener onTransformItemClickListener){
+        this.mOnTransformItemClickListener = onTransformItemClickListener;
+    }
+
+    public OnTransformItemClickListener getOnTransformItemClickListener(){
+        return mOnTransformItemClickListener;
+    }
+
+
     public void setAdapter(TransformAdapter transformAdapter) {
         transformAdapter.setHorizontalTransformView(mContext, this);
     }
+
+
 }

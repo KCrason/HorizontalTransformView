@@ -3,9 +3,8 @@ package com.kcrason.horizontaltransformview;
 import android.view.View;
 
 /**
- * @author Created by KCrason on 2016/8/30.
- * @email 535089696@qq.com
+ * Created by KCrason on 2016/8/30.
  */
 public interface OnTransformItemClickListener {
-    void onTransformListener(View view, int position);
+    void onItemClickListener(View view, int position);
 }
